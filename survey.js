@@ -6,15 +6,6 @@ const rl = readline.createInterface({
 });
 
 const survey = {
-  questions: [
-    'q01',
-    'q02',
-    'q03',
-    'q04',
-    'q05',
-    'q06',
-    'q07'
-  ],
   q01: {
     question: `What's your name? Nicknames are also acceptable :)`,
     answer: ''
@@ -43,22 +34,28 @@ const survey = {
     question: `What is your superpower? In a few words, tell us what you are amazing at!`,
     answer: ''
   },
+  userDescription: '',
+  generateUserDescription: function() {
+    this.userDescription = `${this.q01.answer} loves listening to ${this.q03.answer} while ${this.q02.answer}, devouring ${this.q05.answer} for ${this.q04.answer}, prefers ${this.q06.answer} over any other sport, and is amazing at ${this.q07.answer}.`;
+  }
 }
 
 rl.question(survey.q01.question, (answer) => {
-  console.log(`Thank you for your valuable feedback: ${answer}`);
+  storeAnswer('q01', answer);
   rl.question(survey.q02.question, (answer) => {
-    console.log(`Thank you for your valuable feedback: ${answer}`);
+    storeAnswer('q02', answer);
     rl.question(survey.q03.question, (answer) => {
-      console.log(`Thank you for your valuable feedback: ${answer}`);
+      storeAnswer('q03', answer);
       rl.question(survey.q04.question, (answer) => {
-        console.log(`Thank you for your valuable feedback: ${answer}`);
+        storeAnswer('q04', answer);
         rl.question(survey.q05.question, (answer) => {
-          console.log(`Thank you for your valuable feedback: ${answer}`);
+          storeAnswer('q05', answer);
           rl.question(survey.q06.question, (answer) => {
-            console.log(`Thank you for your valuable feedback: ${answer}`);
+            storeAnswer('q06', answer);
             rl.question(survey.q07.question, (answer) => {
-              console.log(`Thank you for your valuable feedback: ${answer}`);
+              storeAnswer('q07', answer);
+              survey.generateUserDescription();
+              console.log(survey.userDescription);
               rl.close();
            });
           });
@@ -68,13 +65,4 @@ rl.question(survey.q01.question, (answer) => {
   });
 });
 
-/*
-QUESTIONS TO ASK:
-What's your name? Nicknames are also acceptable :)
-What's an activity you like doing?
-What do you listen to while doing that?
-Which meal is your favourite (eg: dinner, brunch, etc.)
-What's your favourite thing to eat for that meal?
-Which sport is your absolute favourite?
-What is your superpower? In a few words, tell us what you are amazing at!
-*/
+const storeAnswer = (questionId, answer) => survey[questionId].answer = answer;
