@@ -45,13 +45,27 @@ const survey = {
   },
 }
 
-for (const question of survey.questions) {
-  console.log(survey[question].question)
-}
-rl.question('What do you think of Node.js? ', (answer) => {
+rl.question(survey.q01.question, (answer) => {
   console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
+  rl.question(survey.q02.question, (answer) => {
+    console.log(`Thank you for your valuable feedback: ${answer}`);
+    rl.question(survey.q03.question, (answer) => {
+      console.log(`Thank you for your valuable feedback: ${answer}`);
+      rl.question(survey.q04.question, (answer) => {
+        console.log(`Thank you for your valuable feedback: ${answer}`);
+        rl.question(survey.q05.question, (answer) => {
+          console.log(`Thank you for your valuable feedback: ${answer}`);
+          rl.question(survey.q06.question, (answer) => {
+            console.log(`Thank you for your valuable feedback: ${answer}`);
+            rl.question(survey.q07.question, (answer) => {
+              console.log(`Thank you for your valuable feedback: ${answer}`);
+              rl.close();
+           });
+          });
+        });
+      });
+    });
+  });
 });
 
 /*
