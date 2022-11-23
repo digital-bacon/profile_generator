@@ -5,6 +5,49 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+const survey = {
+  questions: [
+    'q01',
+    'q02',
+    'q03',
+    'q04',
+    'q05',
+    'q06',
+    'q07'
+  ],
+  q01: {
+    question: `What's your name? Nicknames are also acceptable :)`,
+    answer: ''
+  },
+  q02: {
+    question: `What's an activity you like doing?`,
+    answer: ''
+  },
+  q03: {
+    question: `What do you listen to while doing that?`,
+    answer: ''
+  },
+  q04: {
+    question: `Which meal is your favourite (eg: dinner, brunch, etc.)`,
+    answer: ''
+  },
+  q05: {
+    question: `What's your favourite thing to eat for that meal?`,
+    answer: ''
+  },
+  q06: {
+    question: `Which sport is your absolute favourite?`,
+    answer: ''
+  },
+  q07: {
+    question: `What is your superpower? In a few words, tell us what you are amazing at!`,
+    answer: ''
+  },
+}
+
+for (const question of survey.questions) {
+  console.log(survey[question].question)
+}
 rl.question('What do you think of Node.js? ', (answer) => {
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
